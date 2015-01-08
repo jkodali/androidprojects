@@ -3,16 +3,14 @@ package com.jeevangadgets.jeevanalarm;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
-import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.app.DialogFragment;
@@ -33,7 +31,7 @@ public class TimePickerDialogFragment extends DialogFragment implements OnTimeSe
  
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+		SimpleDateFormat format = new SimpleDateFormat("hh:mm a", Locale.US);
 		try {
 			cal.setTime(format.parse(mDateView.getText().toString()));
 		} catch (Exception e) {
@@ -50,7 +48,7 @@ public class TimePickerDialogFragment extends DialogFragment implements OnTimeSe
 	public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 		// TODO Auto-generated method stub
 		Calendar cal = new GregorianCalendar(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, hourOfDay, minute);
-		SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+		SimpleDateFormat format = new SimpleDateFormat("hh:mm a", Locale.US);
 		mDateView.setText(format.format(cal.getTime()));		
 		
 	}	

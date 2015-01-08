@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         }
     }
     
-    public void openNewAlarm() {
+	public void openNewAlarm() {
     	Intent intent = new Intent(this, AddNewAlarmActivity.class);
     	startActivity(intent);
     }

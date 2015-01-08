@@ -3,6 +3,7 @@ package com.jeevangadgets.jeevanalarm;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -29,7 +30,7 @@ public class DatePickerDialogFragment extends DialogFragment implements OnDateSe
  
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
 		try {
 			cal.setTime(format.parse(mDateView.getText().toString()));
 		} catch (Exception e) {
@@ -48,7 +49,7 @@ public class DatePickerDialogFragment extends DialogFragment implements OnDateSe
 			int dayOfMonth) {
 		// TODO Auto-generated method stub
 		Calendar cal = new GregorianCalendar(year, monthOfYear, dayOfMonth);
-		SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
 		mDateView.setText(format.format(cal.getTime()));		
 	}	
 	

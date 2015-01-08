@@ -25,20 +25,50 @@
 	<TextView android:id="@+id/date"
 	    android:layout_width="40dp"
 		android:layout_height="wrap_content"
-		style="@android:style/Widget.DeviceDefault.Light.Spinner"
+		style="@android:style/Widget.Holo.Light.Spinner"
 		android:onClick="showDatePickerDialog"
 	    android:layout_below="@+id/label_on"
 	    android:layout_toLeftOf="@+id/time"
 	    android:layout_alignParentLeft="true"
+	    android:freezesText="true"
 	/>		
 
 	<TextView android:id="@+id/time"
 	    android:layout_width="120dp"
 		android:layout_height="wrap_content"
-		style="@android:style/Widget.DeviceDefault.Light.Spinner"
+		style="@android:style/Widget.Holo.Light.Spinner"
 		android:onClick="showTimePickerDialog"
 		android:layout_below="@+id/label_on"
 	    android:layout_alignParentRight="true"
+	    android:freezesText="true"
    />		
 
+	<TextView android:id="@+id/label_repeat"
+	    android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingTop="@dimen/activity_vertical_margin"
+	    android:text="@string/label_repeat"
+	    android:layout_below="@+id/date"
+   />		
+
+	<EditText android:id="@+id/repeat_value"
+	    android:layout_width="40dp"
+	    android:layout_height="wrap_content"
+	    android:singleLine="true"
+	    android:inputType="number"
+	    android:hint="@string/default_repeat_value" 
+	    android:layout_below="@+id/label_repeat"
+	    android:layout_toLeftOf="@+id/repeat_frequency"
+	    android:layout_alignParentLeft="true"
+    />
+
+	<Spinner android:id="@+id/repeat_frequency"
+	    android:layout_width="120dp"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/label_repeat"
+	    android:layout_alignParentRight="true"
+	    android:entries="@array/repeat_frequency_list"
+	    android:prompt="@string/repeat_frequency_prompt"
+   />		
+			
 </RelativeLayout>

@@ -2,11 +2,15 @@ package com.jeevangadgets.jeevanalarm;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Locale;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
+import android.app.AlarmManager;
+import android.app.Fragment;
+import android.app.Activity;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,7 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AddNewAlarmActivity extends ActionBarActivity {
+public class AddNewAlarmActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,7 @@ public class AddNewAlarmActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_add_new_alarm);
 
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
+			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
@@ -33,7 +37,7 @@ public class AddNewAlarmActivity extends ActionBarActivity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_new_alarm, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -42,8 +46,15 @@ public class AddNewAlarmActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		if (id == R.id.action_cancel) {
+			super.finish();
+		}
+		else if (id == R.id.action_accept) {
+			AlarmManager alarmMgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
+			Intent intent = new Intent(AddNewAlarmActivity.this, AlarmReceiver.class);
+			PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+			alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+(1000), 5000, alarmIntent);
+			super.finish();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -63,12 +74,12 @@ public class AddNewAlarmActivity extends ActionBarActivity {
 					container, false);
 
 			Calendar today = Calendar.getInstance();
-			SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy");
+			SimpleDateFormat format = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
 			TextView view = (TextView)rootView.findViewById(R.id.date);
 			view.setText(format.format(today.getTime()));
 			
 			view = (TextView)rootView.findViewById(R.id.time);
-			format = new SimpleDateFormat("hh:mm a");
+			format = new SimpleDateFormat("hh:mm a", Locale.US);
 			view.setText(format.format(today.getTime()));
 			
 			return rootView;

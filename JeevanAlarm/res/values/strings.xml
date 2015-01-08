@@ -4,9 +4,19 @@
     <string name="app_name">JeevanAlarm</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_new">Add Alarm</string>
+    <string name="action_accept">Save</string>
+        <string name="action_cancel">Cancel</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_new_alarm">Add New Alarm</string>
     <string name="edit_name">Alarm Name</string>
     <string name="label_on">ON</string>
+    <string name="label_repeat">REPEAT AFTER</string>
+    <string name="default_repeat_value">0</string>
+    <string name="repeat_frequency_prompt">Choose a frequency</string>
+    
+    <string-array name="repeat_frequency_list">
+        <item>Days</item>
+        <item>Hours</item>
+    </string-array>
 
 </resources>
