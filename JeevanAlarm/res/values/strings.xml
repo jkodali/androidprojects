@@ -5,7 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_new">Add Alarm</string>
     <string name="action_accept">Save</string>
-        <string name="action_cancel">Cancel</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_new_alarm">Add New Alarm</string>
     <string name="edit_name">Alarm Name</string>

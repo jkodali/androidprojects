@@ -1082,8 +1082,10 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_action_accept=0x7f020057;
         public static final int ic_action_cancel=0x7f020058;
-        public static final int ic_action_new=0x7f020059;
-        public static final int ic_launcher=0x7f02005a;
+        public static final int ic_action_discard=0x7f020059;
+        public static final int ic_action_edit=0x7f02005a;
+        public static final int ic_action_new=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
     }
     public static final class id {
         public static final int action_accept=0x7f050045;
@@ -1096,6 +1098,8 @@ containing a value of this type.
         public static final int action_bar_title=0x7f050022;
         public static final int action_cancel=0x7f050046;
         public static final int action_context_bar=0x7f05001d;
+        public static final int action_delete=0x7f050048;
+        public static final int action_edit=0x7f050047;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
@@ -1216,6 +1220,7 @@ containing a value of this type.
     public static final class menu {
         public static final int activity_main_menu=0x7f0d0000;
         public static final int add_new_alarm=0x7f0d0001;
+        public static final int main_activity_context_menu=0x7f0d0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1260,16 +1265,18 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_accept=0x7f0a0010;
         public static final int action_cancel=0x7f0a0011;
+        public static final int action_delete=0x7f0a0012;
+        public static final int action_edit=0x7f0a0013;
         public static final int action_new=0x7f0a000f;
-        public static final int action_settings=0x7f0a0012;
+        public static final int action_settings=0x7f0a0014;
         public static final int app_name=0x7f0a000d;
-        public static final int default_repeat_value=0x7f0a0017;
-        public static final int edit_name=0x7f0a0014;
+        public static final int default_repeat_value=0x7f0a0019;
+        public static final int edit_name=0x7f0a0016;
         public static final int hello_world=0x7f0a000e;
-        public static final int label_on=0x7f0a0015;
-        public static final int label_repeat=0x7f0a0016;
-        public static final int repeat_frequency_prompt=0x7f0a0018;
-        public static final int title_activity_add_new_alarm=0x7f0a0013;
+        public static final int label_on=0x7f0a0017;
+        public static final int label_repeat=0x7f0a0018;
+        public static final int repeat_frequency_prompt=0x7f0a001a;
+        public static final int title_activity_add_new_alarm=0x7f0a0015;
     }
     public static final class style {
         /** 
