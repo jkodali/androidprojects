@@ -21,7 +21,8 @@ public class AlarmService extends IntentService {
 		Bundle bundle = incomingIntent.getExtras();
 		Intent intent = new Intent(AlarmService.this, AlarmReceiver.class);
 		intent.putExtra("AlarmId", bundle.getString("AlarmId"));
-		PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		intent.putExtra("AlarmName", bundle.getString("AlarmName"));
+		PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 		if (incomingIntent.getAction() == "Cancel")
 			alarmMgr.cancel(alarmIntent);
 		else

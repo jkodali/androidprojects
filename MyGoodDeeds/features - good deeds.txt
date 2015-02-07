@@ -1,0 +1,14 @@
+categories/groups
+  deed
+    good or bad
+    once a day or multiple times a day
+    is favourite
+favourite list with star next to them
+when a deed is clicked
+  show star if favourite
+  show image thumbsup if good or thumbsdown if bad
+  show date
+  add if image is clicked
+  if clicked again and only once a day ask for removal
+
+	

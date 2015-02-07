@@ -2,10 +2,7 @@ package com.jeevangadgets.jeevanalarm;
 
 import java.util.ArrayList;
 
-import android.app.AlarmManager;
 import android.app.ListActivity;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -104,17 +101,18 @@ public class MainActivity extends ListActivity implements OnItemClickListener, O
     
     protected void deleteAlarm() {
 		// TODO Auto-generated method stub
+		Intent msgIntent = new Intent(this, AlarmService.class);
+		msgIntent.putExtra("AlarmId", longClickedAlarmData.Id);
+		msgIntent.putExtra("AlarmName", longClickedAlarmData.Name);
+		msgIntent.setAction("Cancel");
+		startService(msgIntent);
+		
 		AlarmDBHelper dbHelper = new AlarmDBHelper(this);
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		String selection = AlarmList._ID + " LIKE ?";
 		String[] selectionArgs = { String.valueOf(longClickedAlarmData.Id) };
 		db.delete(AlarmList.TABLE_NAME, selection, selectionArgs);
 
-		Intent msgIntent = new Intent(this, AlarmService.class);
-		msgIntent.putExtra("AlarmId", longClickedAlarmData.Id);
-		msgIntent.setAction("Cancel");
-		startService(msgIntent);
-		
 	    LoadListView();
 	}
 

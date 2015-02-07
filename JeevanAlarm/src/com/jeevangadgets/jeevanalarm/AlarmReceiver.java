@@ -9,16 +9,20 @@ import android.content.Intent;
 
 public class AlarmReceiver extends BroadcastReceiver {
 	@Override
-	public void onReceive(Context context, Intent intent) {   
-		long id = intent.getLongExtra("id", 0);
-        String msg = intent.getStringExtra("msg");
+	public void onReceive(Context context, Intent incomingIntent) {   
+		Integer id = Integer.parseInt(incomingIntent.getStringExtra("AlarmId"));
+        String name = incomingIntent.getStringExtra("AlarmName");
     
-        PendingIntent pi = PendingIntent.getActivity(context, 0, new Intent(), 0);
+        Intent intent = new Intent(context, ShowAlarm.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("AlarmName", name);
+        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
 
         Notification n = new Notification.Builder(context)
-        .setContentTitle("Alarm")
-        .setContentText(msg)
-        .setSmallIcon(R.drawable.ic_launcher)
+        //.setContentTitle("Alarm")
+        //.setContentText(name)
+        //.setSmallIcon(R.drawable.ic_launcher)
+        .setFullScreenIntent(pi, true)
         .setWhen(System.currentTimeMillis())
         .setContentIntent(pi)
         .build();
@@ -32,7 +36,8 @@ public class AlarmReceiver extends BroadcastReceiver {
          
         NotificationManager nm = (NotificationManager) 
                                     context.getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.notify((int)id, n);	
+        //nm.notify((int)id, n);
+        context.startActivity(intent);
 	}
 
 }

@@ -7,12 +7,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.DialogFragment;
 import android.app.Fragment;
-import android.app.PendingIntent;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -68,7 +65,8 @@ public class AddNewAlarmActivity extends Activity {
 			ContentValues values = new ContentValues();
 			
 			TextView view = (TextView)findViewById(R.id.edit_name);
-			values.put(AlarmList.COLUMN_NAME_ALARM_NAME, view.getText().toString());
+			String alarmName = view.getText().toString();
+			values.put(AlarmList.COLUMN_NAME_ALARM_NAME, alarmName);
 			
 			view = (TextView)findViewById(R.id.date);
 			String date = view.getText().toString();
@@ -97,6 +95,7 @@ public class AddNewAlarmActivity extends Activity {
 
 			Intent msgIntent = new Intent(this, AlarmService.class);
 			msgIntent.putExtra("AlarmId", alarmId);
+			msgIntent.putExtra("AlarmName", alarmName);
 			msgIntent.setAction("Create");
 			startService(msgIntent);
 			super.finish();
